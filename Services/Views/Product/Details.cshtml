@@ -1,0 +1,42 @@
+﻿@model Services.Models.ProductEntity
+
+@{
+    ViewBag.Title = "Detalhes do produto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapped">
+    <div>
+        <h4>@Html.DisplayFor(model => model.Name_Product)</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Link_Image)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Link_Image)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Category)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Voltar", "Index")
+    </p>
+</div>

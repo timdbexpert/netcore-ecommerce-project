@@ -1,0 +1,98 @@
+﻿@using Services.Models;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <div class="Header">
+                    <div class="PageLogo">
+                        <img src="~/Statics/Images/Logo2.png" width="156" height="60" />
+                    </div>
+                    <div class="PageControls">
+                        @using (Html.BeginForm("Search", "Product", FormMethod.Get))
+                        {
+                            @Html.TextBox("Search", null, new { @class = "Search", @placeholder = "Buscar Marcas, Produtos e muito mais...", @name = "Search", @id = "Search" })
+                            <button type="submit" class="BtnPesquisa">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        }
+                    </div>
+                    <div class="PageOptions">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Página Inicial", "Index", "Product", new { area = "" }, null)</li>
+                                @if (Session["Logado"] != null && Session["Logado"].ToString() == "logado")
+                                {
+                                    <li class="Cart">
+                                        <a href="/Cart/Index">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            @if (Session["cart"] != null)
+                                            {
+                                                Cart c = Session["cart"] as Cart;
+                                                if (c.Produtos != null)
+                                                {
+                                                    <span class="badge">@c.QuantidadePorProduto.Count</span>
+                                                }
+                                            }
+                                        </a>
+                                    </li>
+                                    <li>@Html.ActionLink("Sair", "Exit", "User", new { area = "" }, null)</li>
+                                }
+                                else
+                                {
+                                    <li>@Html.ActionLink("Crie sua conta", "Create", "User", new { area = "" }, null)</li>
+                                    <li>@Html.ActionLink("Entrar", "Login", "User", new { area = "" }, null)</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+    <footer>
+        <div class="container">
+            <div class="opcoes">
+                <div class="item" style="border-right: 1px solid #CBCBCB;">
+                    <img src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/ecosystem/payment.svg" />
+                    <h4>Pague com cartão de crédito ou boleto</h4>
+                    <p>Com o Mercado Pago você paga parcelado sem juros ou à vista no boleto. É sempre seguro!</p>
+                </div>
+                <div class="item" style="border-right: 1px solid #CBCBCB;">
+                    <img src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/ecosystem/shipping.svg" />
+                    <h4>Frete grátis a partir de R$ 120</h4>
+                    <p>Só por estar cadastrado no Mercado Livre, você tem frete grátis em milhares de produtos. É um benefício do Mercado Pontos.</p>
+                </div>
+                <div class="item">
+                    <img src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/ecosystem/protected.svg" />
+                    <h4>Segurança, do início ao fim</h4>
+                    <p>Você não gostou do que comprou? Devolva! No Mercado Livre não há nada que você não possa fazer, porque você está sempre protegido.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

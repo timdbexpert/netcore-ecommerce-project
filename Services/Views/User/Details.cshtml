@@ -1,0 +1,67 @@
+﻿@model Services.Models.UserEntity
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapped">
+    <h2>Detalhe do cliente</h2>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.First_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.First_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Last_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Last_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CPF)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CPF)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Login)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Login)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Voltar", "Index")
+    </p>
+</div>

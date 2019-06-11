@@ -1,0 +1,83 @@
+﻿@using Services.Models;
+@using System.Globalization;
+@model Services.Models.Cart
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapped">
+    <div class="container">
+        <h2>Check Out</h2>
+        <div class="separacao">
+            <div class="produtos">
+                <h2>Endereço de entrega</h2>
+                @using (Html.BeginForm())
+                {
+                    @Html.Editor("CEP", new { htmlAttributes = new { @class = "form-control", @placeholder = "CEP", @Name = "cep", @Id = "cep", required = "required", onblur = "loadCEP(this);" } });
+                    @Html.Editor("Endereço", new { htmlAttributes = new { @class = "form-control", @placeholder = "Endereco", @Name = "endereco", @Id = "endereco", disabled = "disabled" } });
+                    @Html.Editor("Complemento", new { htmlAttributes = new { @class = "form-control", @placeholder = "Complemento ex. Nº, Bloco, Apto...", @Name = "complemento", @Id = "endereco", required = "required" } });
+                    @Html.Editor("Bairro", new { htmlAttributes = new { @class = "form-control", @placeholder = "Bairro", @Name = "bairro", @Id = "bairro", disabled = "disabled" } });
+                    @Html.Editor("Cidade", new { htmlAttributes = new { @class = "form-control", @placeholder = "Cidade", @Name = "cidade", @Id = "cidade", disabled = "disabled" } });
+                    @Html.Editor("Estado", new { htmlAttributes = new { @class = "form-control", @placeholder = "Estado", @Name = "estado", @Id = "estado", disabled = "disabled" } });
+                }
+
+                <div class="formaPagamento">
+                    <h2>Forma de Pagamento</h2>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" onchange="Payment(this);" value="boleto" checked>Boleto Bancário</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" onchange="Payment(this);" value="cartao">Cartão de crédito</label>
+                    </div>
+
+                    <div id="formaCartao" class="formaCartao">
+                        @Html.Editor("Número do Cartão", new { htmlAttributes = new { @class = "form-control", @placeholder = "Número do Cartão", @Name = "cartao", @Id = "cartao", required = "required" } })
+                        @Html.Editor("Nome no cartão", new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome do cartão", @Name = "nomecartao", @Id = "nomecartao", required = "required" } })
+                        @Html.Editor("Dia Vencimento", new { htmlAttributes = new { @class = "form-control", @placeholder = "Dia do vencimento", @Name = "dia", @Id = "dia", required = "required" } })
+                        @Html.Editor("Ano Vencimento", new { htmlAttributes = new { @class = "form-control", @placeholder = "Ano do vencimento", @Name = "ano", @Id = "ano", required = "required" } })
+                        @Html.Editor("CCV", new { htmlAttributes = new { @class = "form-control", @placeholder = "CCV", @Name = "ccv", @Id = "ccv", required = "required" } })
+                    </div>
+                </div>
+                @Html.ActionLink("Finalizar", "Index", "Checkout", null, new { @class = "btn btnCarrinho", @style = "margin-top: 10px" })
+            </div>
+            <div class="total">
+                <h3>Você Pagará</h3>
+                @{ double i = 0; }
+                @foreach (ProductEntity p in Model.Produtos)
+                {
+                    i = i + (p.Price * Model.QuantidadePorProduto[p.ID]);
+                }
+                <hr />
+                <p>Total: @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", i)</p>
+                <hr />
+                <p>Envio: Padrão (R$ 0,00) </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function Payment(sender) {
+        if (sender.value === 'boleto') {
+            document.getElementById('formaCartao').style.display = 'none';
+        } else {
+            document.getElementById('formaCartao').style.display = 'block';
+        }
+    }
+
+    function loadCEP(sender) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let obj = JSON.parse(this.responseText);
+                document.getElementsByName("endereco")[0].value = obj.logradouro;
+                document.getElementsByName("bairro")[0].value = obj.bairro;
+                document.getElementsByName("cidade")[0].value = obj.localidade;
+                document.getElementsByName("estado")[0].value = obj.uf;
+            }
+        };
+        xhttp.open("GET", "http://viacep.com.br/ws/" + sender.value + "/json/unicode/", true);
+        xhttp.send();
+    }
+</script>

@@ -1,0 +1,541 @@
+﻿@font-face {
+    font-family: ProximaNova;
+    src: url("~/Statics/fonts/proxima-nova.otf");
+}
+
+* {
+    font-family: "ProximaNova",-apple-system,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+}
+
+.wrapped {
+    padding-top: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+body {
+    background: #F7F7F7;
+}
+
+input[type="submit"] {
+    float: right;
+}
+
+.Header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: center;
+    background: #FFF159;
+    height: 100px;
+}
+
+.PageLogo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding-right: 45px;
+}
+
+.PageOptions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.nav li a,
+.nav li a:link,
+.nav li a:active,
+.nav li a:visited {
+    font-family: "ProximaNova",-apple-system,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    color: #4f4f42;
+    font-weight: 100;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    cursor: default
+}
+
+    .nav li a:hover,
+    .nav li a:focus {
+        background: none;
+    }
+
+.PageControls {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+
+.PageControls form{ 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+.Search {
+    background: #FFF;
+    color: #4f4f42;
+    padding-left: 15px;
+    font-size: 14pt;
+    font-weight: 100;
+    border: none;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    outline-style: none;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+
+    .Search::-webkit-input-placeholder {
+        color: #CBCBCB;
+    }
+
+    .Search:-moz-placeholder {
+        color: #CBCBCB;
+    }
+
+    .Search::-moz-placeholder {
+        color: #CBCBCB;
+    }
+
+    .Search:-ms-input-placeholder {
+        color: #CBCBCB;
+    }
+
+.BtnPesquisa {
+    background: #FFF;
+    border: none;
+    height: 50px;
+    width: 50px;
+    color: #CBCBCB;
+    outline: none;
+    outline-style: none;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    font-size: 16pt;
+    font-weight: 100;
+}
+
+body header nav {
+    width: 100%;
+    background: #FFF159;
+}
+
+.CardLogin {
+    font-family: ProximaNova, "ProximaNova";
+    font-size: 12pt;
+    background: #FFF;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-25%);
+    width: 30%;
+    min-width: 250px;
+    padding: 5%;
+    border-radius: 6px;
+    height: auto;
+    min-height: 350px;
+    max-height: 500px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.BtnLogin {
+    background: #3483fa;
+    margin-top: 10px;
+    height: 45px;
+    margin-bottom: 15px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+    .BtnLogin:hover, .BtnLogin:focus {
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in;
+        transition-property: all;
+        background: #4790ff;
+        border: 1px solid #4790ff;
+    }
+
+.Login {
+    width: 100%;
+}
+
+.Forms input[type="text"], .Forms input[type="password"], .Forms input[type="email"] {
+    margin-top: 10px;
+    height: 45px;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid #CBCBCB;
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,.1);
+    outline: none;
+    outline-color: transparent;
+    outline-style: none;
+    outline-offset: 0;
+    outline-width: 0;
+    font-size: inherit;
+    font-family: inherit;
+    color: rgba(0,0,0,.8);
+}
+
+    .Forms input[type="text"]:hover, .Forms input[type="password"]:hover, .Forms input[type="email"]:hover {
+        border-bottom: 1px solid #292929;
+    }
+
+    .Forms input[type="text"]:focus, .Forms input[type="password"]:focus, .Forms input[type="email"]:focus {
+        border-bottom: 3px solid #3483fa;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in;
+        transition-property: all;
+    }
+
+.Forms p a,
+.Forms p a:active,
+.Forms p a:link,
+.Forms p a:visited {
+    text-decoration: none;
+}
+
+    .Forms p a:hover,
+    .Forms p a:focus {
+        text-decoration: none;
+        color: #4790ff;
+    }
+
+.Logo > h2 {
+    font-weight: 100;
+    font-size: 1.4em;
+    line-height: 1.17;
+    font-weight: 600;
+    text-align: center;
+}
+
+.Forms p {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.Itens {
+    display: flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: space-around;
+}
+
+.linkProduct,
+.linkProduct:link,
+.linkProduct:active,
+.linkProduct:visited {
+    text-decoration: none;
+    color: #333;
+}
+
+.card {
+    margin-left: 5px;
+    margin-right: 5px;
+    background: #fff;
+    width: 250px;
+    height: 370px;
+    border-radius: 5px;
+    -webkit-transition: height .1s ease-in;
+    -o-transition: height .1s ease-in;
+    transition: height .1s ease-in;
+    transition-property: all;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+
+    .card::before {
+        -webkit-transition: height .1s ease-in;
+        -o-transition: height .1s ease-in;
+        transition: height .1s ease-in;
+        transition-property: all;
+    }
+
+    .card:hover {
+        height: 430px;
+        content: "";
+        -webkit-box-shadow: 0 7px 16px 0 rgba(0,0,0,.2), 0 1px 3px 0 rgba(0,0,0,.1);
+        box-shadow: 0 7px 16px 0 rgba(0,0,0,.2), 0 1px 3px 0 rgba(0,0,0,.1);
+        -webkit-transition: opacity .18s ease-out;
+        -o-transition: opacity .18s ease-out;
+        transition: opacity .18s ease-out;
+        -webkit-transition: height .1s ease-in;
+        -o-transition: height .1s ease-in;
+        transition: height .1s ease-in;
+        transition-property: all;
+        opacity: 1;
+    }
+
+        .card:hover .descricao {
+            opacity: 1;
+            -webkit-transition: opacity .2s ease-out;
+            -o-transition: opacity .2s ease-out;
+            transition: opacity .2s ease-out;
+            -webkit-transition: height .2s ease-in;
+            -o-transition: height .2s ease-in;
+            transition: height .2s ease-in;
+            transition-property: all;
+            will-change: opacity;
+        }
+
+.opc_visual {
+    content: "";
+    height: 140px;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: stretch;
+    text-align: center;
+}
+
+.pagamento {
+    font-family: "ProximaNova",-apple-system,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    border-left: 4px solid #3483fa;
+    padding: 10px;
+    width: 25%;
+}
+
+.Cartao {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: "ProximaNova",-apple-system,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    border-left: 1px solid #CBCBCB;
+    padding: 10px;
+    width: 25%;
+}
+
+    .Cartao h4 {
+        margin-left: 10px;
+        color: #333;
+        font-size: 16pt;
+    }
+
+.pagamento h4 {
+    color: #333;
+    font-size: 16pt;
+}
+
+.pagamento p {
+    line-height: 10px;
+    font-size: 12pt;
+    color: #999;
+}
+
+.Imagem {
+    padding: 10px;
+    height: 280px;
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #CBCBCB;
+}
+
+.addons {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+.descricao {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+footer {
+    width: 100%;
+    height: 250px;
+    background: #FFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.opcoes {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 33%;
+    height: 120px;
+    padding: 20px;
+}
+
+    .item h4 {
+        text-align: center;
+    }
+
+    .item p {
+        text-align: center
+    }
+
+.TituloProdutos{
+    color: #333;
+    font-size: 18pt;
+}
+
+.Cart {
+    text-align: center;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.separacao{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.produtos {
+    background: #FFF;
+    width: 90%;
+    border-radius: 6px;
+    font-family: "ProximaNova",-apple-system,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    padding: 25px;
+}
+
+table tbody tr td {
+    font-size: 12pt;
+    color:#333;
+}
+
+.total {
+    width: 29%;
+    height: 450px;
+    background: #f3f3f3;
+    margin-left: 20px;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+.total h3 {
+    color: #333;
+    text-align: center;
+}
+
+.total p{
+    font-size: 14pt;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.btnCarrinho {
+    float: right;
+    background: #3483fa;
+    height: 45px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 100;
+    color: #FFF;
+    text-align: center;
+    padding-top: 10px;
+}
+    .btnCarrinho:hover, .btnCarrinho:focus {
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in;
+        transition-property: all;
+        background: #4790ff;
+        border: 1px solid #4790ff;
+        color: #FFF;
+    }
+
+.iten_search_not_found{
+    font-family: inherit;
+    font-size: 18pt;
+    color: #333;
+    text-align:center;
+    width: 100%;
+}
+
+
+
+.produtos input[type="text"], .produtos input[type="password"], .produtos input[type="email"] {
+    margin-top: 10px;
+    height: 45px;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid #CBCBCB;
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,.1);
+    outline: none;
+    outline-color: transparent;
+    outline-style: none;
+    outline-offset: 0;
+    outline-width: 0;
+    font-size: inherit;
+    font-family: inherit;
+    color: rgba(0,0,0,.8);
+}
+
+    .produtos input[type="text"]:hover, .produtos input[type="password"]:hover, .produtos input[type="email"]:hover {
+        border-bottom: 1px solid #292929;
+    }
+
+    .produtos input[type="text"]:focus, .produtos input[type="password"]:focus, .produtos input[type="email"]:focus {
+        border-bottom: 3px solid #3483fa;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in;
+        transition-property: all;
+    }
+
+.formaPagamento{
+    margin-top: 30px;
+}
+.formaCartao{
+    display: none;
+}

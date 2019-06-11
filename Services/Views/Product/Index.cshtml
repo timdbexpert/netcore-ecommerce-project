@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Services.Models.ProductEntity>
+@using System.Globalization;
+@{
+    ViewBag.Title = "E-commerce livre - Produtos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapped">
+    <div class="container">
+        <div class="opc_visual">
+            <div class="pagamento">
+                <h4>Pagamento rápido e seguro</h4>
+                <p>com Comercio Pago</p>
+            </div>
+            <div class="Cartao">
+                <img src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/credit-card.svg" />
+                <h4>Pagamento em 1x </h4>
+            </div>
+            <div class="Cartao">
+                <img src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/payment-agreement.svg" />
+                <h4>Mais formas de pagamento</h4>
+            </div>
+            <div class="Cartao">
+                <img src="https://http2.mlstatic.com/resources/frontend/homes-korriban/assets/images/payments/view-more.svg" />
+                <h4>Pagamentos à vista</h4>
+            </div>
+        </div>
+        <div class="container"><h3 class="TituloProdutos">Principais Produtos</h3></div>
+        <div class="Itens">
+            @if (Model != null && Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+            <a class="linkProduct" href="/Product/Details/@item.ID">
+                <div class="card">
+                    <div class="Imagem">
+                        <img class="img-responsive" src="@item.Link_Image" />
+                    </div>
+                    <div class="addons">
+                        <p>@item.Category</p>
+                        <h3>@string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", item.Price)</h3>
+                        <p class="descricao">@item.Description.Substring(0, 35)</p>
+                        <div class="descricao">@Html.ActionLink("Adicionar ao Carrinho", "AdicionarCarrinho", "Cart", new { item.ID }, new { @class = " form-control btn btn-primary" })</div>
+                    </div>
+                </div>
+            </a>
+                }
+            }else {
+                   <h2 class="iten_search_not_found">Não há itens para mostrar aqui :(</h2>
+            }
+        </div>
+    </div>
+</div>

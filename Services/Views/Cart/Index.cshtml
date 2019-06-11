@@ -1,0 +1,75 @@
+﻿@using Services.Models;
+@using System.Globalization;
+@model Services.Models.Cart
+@{
+    ViewBag.Title = "Cart";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="wrapped">
+    <div class="container">
+        <h2>Finalizar Compra</h2>
+        <div class="separacao">
+            <div class="produtos">
+                @if (Model == null || Model.Produtos == null || Model.Produtos.Count <= 0)
+                {
+                    <h2>Ainda não há produtos nestá sessão!</h2>
+                }
+                else
+                {
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Imagem</th>
+                                <th>Produto</th>
+                                <th>Preço Unitário</th>
+                                <th></th>
+                                <th>Quantidade</th>
+                                <th></th>
+                                <th>SubTotal</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (ProductEntity p in Model.Produtos)
+                            {
+                                <tr>
+                                    <td><img src="@p.Link_Image" class="img-responsive img-round" width="50" height="50" /></td>
+                                    <td>@p.Name_Product</td>
+                                    <td>@string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", p.Price)</td>
+                                    <td style="text-align: center">
+                                        @Html.ActionLink("+", "AdicionarQuantidade", "Cart", new { p.ID }, new { @class = "btn btn-success" })
+                                    </td>
+                                    <td style="text-align:center">@Model.QuantidadePorProduto[p.ID]</td>
+                                    <td style="text-align:center">
+                                        @Html.ActionLink("-", "RemoverQuantidade", "Cart", new { p.ID }, new { @class = "btn btn-warning" })
+                                    </td>
+                                    <td>@string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", p.Price * Model.QuantidadePorProduto[p.ID])</td>
+                                    <td>
+                                        @Html.ActionLink("Remover", "RemoverItem", "Cart", new { p.ID }, new { @class = "btn btn-danger" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.ActionLink("Continuar", "Index", "Checkout", null, new { @class = "btn btnCarrinho" })
+                }
+            </div>
+            <div class="total">
+                <h3>Você Pagará</h3>
+                @{ double i = 0; }
+                @foreach (ProductEntity p in Model.Produtos)
+                {
+                    i = i + (p.Price * Model.QuantidadePorProduto[p.ID]);
+                }
+                <hr />
+                <p>Total: @string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", i)</p>
+                <hr />
+                <p>Envio: -- </p>
+            </div>
+        </div>
+    </div>
+</div>
